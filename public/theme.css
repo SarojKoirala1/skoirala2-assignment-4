@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Merriweather:wght@700&family=Press+Start+2P&family=Roboto+Condensed:wght@300;700&family=Rubik+Moonrocks&display=swap');
+body{
+    
+    background-image: linear-gradient(#83c5be, #006d77);
+    color: #edf6f9;
+    background-repeat: no-repeat;
+    overflow: auto;
+}
+.navbar-brand-custom{
+    font-size:xx-large;
+    font-family:'Audiowide';
+    color:#15222c !important;
+    text-shadow: 1px 1px 1px #7ba9ff;
+}
+
+.nav-custom{
+    color: rgb(255, 255, 255) !important;
+}
+.nav-custom:hover{
+    color: rgb(3, 39, 87) !important;
+}
+.bg-light{
+    background-image: linear-gradient(#f3ad93, #c06341);
+    box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
+}
+
+p{
+    color: #006d77;
+    text-align: center;
+}
+h1,h2,h3,h4,h5,h6{
+    
+font-family: 'Press Start 2P', cursive;
+  color: #e29578;
+  text-align: center;
+  text-shadow: 2px 2px 2px #94482c;
+   
+}
+tr:nth-last-child(odd){
+    background-color: #e29578;
+    color: #006d77;
+}
+tr:nth-last-child(even){
+    background-color:#006d77;
+    color: #e29578;
+}
+
+.about-title p{
+    color:#e29578 !important;
+}
+.sec-background{
+    background-color: #edf6f9;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 15px;
+    box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
+}
+p{
+    font-family: 'Merriweather', serif;
+}
+.sec-background a{
+    color:#006d77;
+}
+.sec-background a:hover{
+    color:#e29578;
+}
+.sec-background.inf{
+    background-color: #edf6f9;
+    width: 49%;
+    
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    float: left; 
+}
+.sec-background.html{
+    background-color: #edf6f9;
+    width: 49%;
+    
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    float: right;
+}
+
+ol{
+    font-weight: bold;
+    font-size:medium; 
+    color: #e29578;
+}
+.table{
+    width:100%;
+    color:68a3be;
+    padding: 2%;
+}
+th{
+    color:#006d77 ;
+}
+.col-span-2{
+    color:#68a3be ;
+    column-span: 3;
+}
+.sec-background.h2{
+    color:#360005;
+}
+
+caption{
+    color:#006d77;
+}
+.images{
+    display: inline-block;
+}
+.btn-primary{
+    background-image: linear-gradient(#f3ad93, #c06341) !important;
+    box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
+}
+.btn-primary:hover{
+    background-image: linear-gradient(#83c5be, #006d77) !important;
+    box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
+}
+legend{
+    font-family: 'Bebas Neue', cursive;
+}
+input{
+    box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
+}
