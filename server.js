@@ -20,7 +20,7 @@ var path = require("path");
 var bodyParser = require('body-parser')
 var collegeData = require('./modules/collegeData');
 
-app.use(express.static("public"));
+app.use(express.static("public/css"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("images"));
 //===================================================================================
