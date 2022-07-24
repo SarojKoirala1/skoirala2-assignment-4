@@ -38,11 +38,11 @@ font-family: 'Press Start 2P', cursive;
 }
 tr:nth-last-child(odd){
     background-color: #e29578;
-    color: #006d77;
+    color: #ffffff;
 }
 tr:nth-last-child(even){
     background-color:#006d77;
-    color: #e29578;
+    color: #ffffff;
 }
 
 .about-title p{
@@ -56,14 +56,28 @@ tr:nth-last-child(even){
     border-radius: 15px;
     box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
 }
+
+
 p{
     font-family: 'Merriweather', serif;
 }
 .sec-background a{
-    color:#006d77;
+    color:#ffffff;
 }
 .sec-background a:hover{
+    color:#000000;
+}
+.sec-background.links a{
+    color:#006d77;
+}
+.sec-background.links a:hover{
     color:#e29578;
+}
+.sec-background.inf a{
+    color:#e29578;
+}
+.sec-background.inf a:hover{
+    color:#006d77;
 }
 .sec-background.inf{
     background-color: #edf6f9;
@@ -107,7 +121,7 @@ th{
     color:#360005;
 }
 
-caption{
+p{
     color:#006d77;
 }
 .images{
@@ -126,4 +140,8 @@ legend{
 }
 input{
     box-shadow:  0 8px 6px -6px rgb(43, 43, 43);
+}
+.custom{
+    padding: 1%;
+    margin: 2%;
 }

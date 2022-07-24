@@ -38,23 +38,23 @@ module.exports.getAllStudents = function(){
     })
 }
 
-module.exports.getTAs = function () {
-    return new Promise(function (resolve, reject) {
-        var filteredStudents = [];
-
-        for (let i = 0; i < dataCollection.students.length; i++) {
-            if (dataCollection.students[i].TA == true) {
-                filteredStudents.push(dataCollection.students[i]);
-            }
-        }
-
-        if (filteredStudents.length == 0) {
-            reject("query returned 0 results"); return;
-        }
-
-        resolve(filteredStudents);
-    });
-};
+//module.exports.getTAs = function () {
+//    return new Promise(function (resolve, reject) {
+//        var filteredStudents = [];
+//
+//        for (let i = 0; i < dataCollection.students.length; i++) {
+//            if (dataCollection.students[i].TA == true) {
+//                filteredStudents.push(dataCollection.students[i]);
+//            }
+//        }
+//
+//        if (filteredStudents.length == 0) {
+//            reject("query returned 0 results"); return;
+//        }
+//
+//       resolve(filteredStudents);
+//    });
+//};
 
 module.exports.getCourses = function(){
    return new Promise((resolve,reject)=>{
@@ -84,6 +84,25 @@ module.exports.getStudentByNum = function (num) {
     });
 };
 
+module.exports.getCourseById = function (id){
+    return new Promise((resolve,reject) =>{
+        var foundCourse=[];
+        for(let i=0;i < dataCollection.courses.length;i++)
+        {
+            if(dataCollection.courses[i].courseId==id)
+            {
+                foundCourse.push(dataCollection.courses[i]);
+            }
+        }
+        if(foundCourse.length<=0){
+            reject("query returned 0 results");return;
+        }
+        else{
+            resolve(foundCourse);
+        }
+     });
+}
+
 module.exports.getStudentsByCourse = function (course) {
     return new Promise(function (resolve, reject) {
         var filteredStudents = [];
@@ -101,6 +120,9 @@ module.exports.getStudentsByCourse = function (course) {
         resolve(filteredStudents);
     });
 };
+
+
+
 
 module.exports.addStudent=(studentData)=>{
     console.log("This is student object", studentData);
@@ -123,3 +145,4 @@ module.exports.addStudent=(studentData)=>{
         });
     });
 }
+

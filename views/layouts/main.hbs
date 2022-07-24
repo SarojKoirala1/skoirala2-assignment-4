@@ -13,61 +13,28 @@
 			<a class="navbar-brand navbar-brand-custom" href="#">
 				Saroj.K
 			</a>
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link nav-custom" href="/">Home</a></li>
-					<li class="nav-item active"><a class="nav-link nav-custom" href="/about">About</a></li>
-					<li class="nav-item"><a class="nav-link nav-custom" href="/htmlDemo">Html Demo</a></li>
-					<li class="nav-item active"><a class="nav-link nav-custom" href="/students/add">Add Students</a></li>
+					{{#navLink "/"}} Home {{/navLink}}
+					{{#navLink "/about"}} About {{/navLink}}
+					{{#navLink "/htmlDemo"}} Html Demo {{/navLink}}
+					{{#navLink "/students/add"}} Add Students {{/navLink}}
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link nav-custom" href="/students">Students</a></li>
-					<li class="nav-item"><a class="nav-link nav-custom" href="/tas">Teaching Assistants</a></li>
+					<!--<li class="nav-item"><a class="nav-link nav-custom" href="/tas">Teaching Assistants</a></li>-->
 					<li class="nav-item"><a class="nav-link nav-custom" href="/courses">Courses</a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<div class="container">
-			<div class="row">
-				<main class="col-md-12">
-
-
-					<br>
-					<!-- Start your code here -->
-					<!--Top Block Content-->
-					<main  class="sec-background">	
-
-						<h1 class="about-title">
-							About Saroj.K Page
-						</h1>
-						</main>
-	
-						<p></p>
-						<main  class="sec-background">	
-						<h3>
-							Want To Know More About Me?
-						</h3>
-	
-						
-							<p>My name is Saroj Koirala. I am a Business Information Technology student currently enrolled in Seneca College, Newham, 2022 Winter Term.
-								My StudentID is skoirala2 and Student Number is 133423210.</p>
-							<p>This program shows students, courses, teaching assistants using a simple html and javascript code with help of express for routing. 
-								This program also show student with their specific number as well as list of student based on their course number.
-							</p>
-						
-					</main>
-					<br>
-					<!-- End your code here  -->
-
-
-
-				</main>
-			</div>
+			{{{body}}}
 		</div>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
