@@ -1,37 +1,31 @@
 <div class="row">
     <div class="col-md-12">
         <br>
-        <main  class="sec-background">
-          <h2>Courses</h2>
-        </main>
-        <br/>
-        <main  class="sec-background stlist">
-        <!--{{#each students}} {{firstName}} {{lastName}} <br> {{/each}}-->
-        <div class="table-responsive ">
-        <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Course Code</th>
-                            <th>Course Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        {{#each courses}}
-                            <tr>
-                                <td> <a href="/course/{{this.courseId}}">   {{this.courseCode}} </a> </td>
-                                <td> <a href="/students?course={{this.courseId}}">   {{this.courseDescription}} </a> </td>
-                        {{/each}}
-                        
-                    </tbody>
-                </table>
-            </div>
+        <h2>Courses</h2>
+        <hr />
+        <div class="table-responsive">
+        <table class="table ">
+            <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each courses}}
+                <tr>
+                    <td><a href="/course/{{courseId}}">{{courseCode}}</a></td>
+                    <td><a href="/students?course={{courseId}}">{{courseDescription}}</a></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        </div>
         
     </div>
-    {{#unless courses}}
+     {{#unless courses}}
         <div class="col-md-12 text-center">
-            <strong>{{this.message}}</strong>
+                <strong>{{message}}</strong>
         </div>
     {{/unless}}
-    </main>
 </div>

@@ -38,24 +38,6 @@ module.exports.getAllStudents = function(){
     })
 }
 
-//module.exports.getTAs = function () {
-//    return new Promise(function (resolve, reject) {
-//        var filteredStudents = [];
-//
-//        for (let i = 0; i < dataCollection.students.length; i++) {
-//            if (dataCollection.students[i].TA == true) {
-//                filteredStudents.push(dataCollection.students[i]);
-//            }
-//        }
-//
-//        if (filteredStudents.length == 0) {
-//            reject("query returned 0 results"); return;
-//        }
-//
-//       resolve(filteredStudents);
-//    });
-//};
-
 module.exports.getCourses = function(){
    return new Promise((resolve,reject)=>{
     if (dataCollection.courses.length == 0) {
@@ -84,30 +66,11 @@ module.exports.getStudentByNum = function (num) {
     });
 };
 
-module.exports.getCourseById = function (id){
-    return new Promise((resolve,reject) =>{
-        var foundCourse=[];
-        for(let i=0;i < dataCollection.courses.length;i++)
-        {
-            if(dataCollection.courses[i].courseId==id)
-            {
-                foundCourse.push(dataCollection.courses[i]);
-            }
-        }
-        if(foundCourse.length<=0){
-            reject("query returned 0 results");return;
-        }
-        else{
-            resolve(foundCourse);
-        }
-     });
-}
-
 module.exports.getStudentsByCourse = function (course) {
     return new Promise(function (resolve, reject) {
         var filteredStudents = [];
 
-        for (let i = 0; i<dataCollection.students.length; i++) {
+        for (let i = 0; i < dataCollection.students.length; i++) {
             if (dataCollection.students[i].course == course) {
                 filteredStudents.push(dataCollection.students[i]);
             }
@@ -121,28 +84,48 @@ module.exports.getStudentsByCourse = function (course) {
     });
 };
 
+module.exports.getCourseById = function (id) {
+    return new Promise(function (resolve, reject) {
+        var foundCourse = null;
 
-
-
-module.exports.addStudent=(studentData)=>{
-    console.log("This is student object", studentData);
-    return new Promise((resolve, reject) =>{
-        let updateStuData = dataCollection.students;
-        studentData['studentNum'] = updateStuData.length+1;
-        if(typeof studentData['TA'] !== undefined && studentData['TA'] === 'on') {
-            studentData['TA'] = true;
-        } else {
-            studentData['TA'] = false;
-        }
-        updateStuData.push(studentData)
-        
-        fs.writeFile('./data/students.json', JSON.stringify(updateStuData), function(err, data) {
-            if (err) {
-                reject("Error", err);
+        for (let i = 0; i < dataCollection.courses.length; i++) {
+            if (dataCollection.courses[i].courseId == id) {
+                foundCourse = dataCollection.courses[i];
             }
-            console.log('Done!');
-            resolve(data);
-        });
+        }
+
+        if (!foundCourse) {
+            reject("query returned 0 results"); return;
+        }
+
+        resolve(foundCourse);
     });
-}
+};
+
+module.exports.addStudent = function (studentData) {
+    return new Promise(function (resolve, reject) {
+
+        studentData.TA = (studentData.TA) ? true : false;
+        studentData.studentNum = dataCollection.students.length + 1;
+        dataCollection.students.push(studentData);
+
+        resolve();
+    });
+
+};
+
+module.exports.updateStudent = function (studentData) {
+    return new Promise(function (resolve, reject) {
+
+        studentData.TA = (studentData.TA) ? true : false;
+
+        for(let i=0; i < dataCollection.students.length; i++){
+            if(dataCollection.students[i].studentNum == studentData.studentNum){
+                dataCollection.students[i] = studentData;
+            }
+        }
+        resolve();
+    });
+};
+
 

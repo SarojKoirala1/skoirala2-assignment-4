@@ -145,3 +145,6 @@ input{
     padding: 1%;
     margin: 2%;
 }
+input a{
+    color: #edf6f9;
+}
