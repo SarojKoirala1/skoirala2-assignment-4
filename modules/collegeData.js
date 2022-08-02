@@ -176,7 +176,9 @@ module.exports.getCourseById = function (id) {
         .then(()=>resolve(Course.findAll({
             where:{
                 courseId: id
+                
             }
+            
         })))
         .catch(()=>reject("no results returned"))
     });
