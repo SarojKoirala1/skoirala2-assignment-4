@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-12">
         <br>
-        <h2>Courses</h2>
+        <a href="/courses/add" class="btn btn-primary float-right">Add New Course</a>
+        <br>
         <hr />
         <div class="table-responsive">
         <table class="table ">
@@ -9,6 +10,7 @@
             <tr>
                 <th>Course Code</th>
                 <th>Course Description</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -16,6 +18,7 @@
                 <tr>
                     <td><a href="/course/{{courseId}}">{{courseCode}}</a></td>
                     <td><a href="/students?course={{courseId}}">{{courseDescription}}</a></td>
+                    <td><a href="/course/delete/id" class="btn btn-danger float-right">Remove</a></td>
                 </tr>
             {{/each}}
             </tbody>
