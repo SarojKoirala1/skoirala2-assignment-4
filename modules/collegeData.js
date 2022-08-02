@@ -194,7 +194,7 @@ module.exports.addStudent = function (studentData) {
         }
         return new Promise((resolve, reject) => {
             Student.create(studentData)
-            .then(()=>resolve(Student.create(studentData)))
+            .then(()=>resolve("Student Added"))
             .catch(()=>reject("unable to create student"))
         });
 
@@ -215,7 +215,7 @@ module.exports.updateStudent = function (studentData) {
         }
         return new Promise((resolve, reject) => {
             Student.update(studentData,{where: {studentNum:studentData.studentNum}}) 
-            .then(()=>resolve(Student.update(studentData,{where: {studentNum:studentData.studentNum}}) ))
+            .then(()=>resolve("Student Updated"))
             .catch(()=>reject("unable to update student"))
         });
 };
