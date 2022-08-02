@@ -212,13 +212,27 @@ module.exports.updateStudent = function (studentData) {
         //    }
         //}
         //resolve();
-        for(prop in studentData){
-            if(prop=="") prop=null;
+        for(const prop in studentData){
+            if (studentData[prop] == ""){
+                studentData[prop] = null;
+            }
         }
         return new Promise((resolve, reject) => {
-            Student.update(studentData,{where: {studentNum:studentData.studentNum}}) 
-            .then(()=>resolve("Student Updated"))
-            .catch(()=>reject("unable to update student"))
+            Student.update({
+                firstName : studentData.firstName,
+                lastName : studentData.lastName,
+                email : studentData.email,
+                addressStreet : studentData.addressStreet,
+                addressCity : studentData.addressCity,
+                addressProvince : studentData.addressProvince,
+                TA : studentData.TA,
+                status : studentData.status
+            },{where: {studentNum:studentData.studentNum}}) 
+            .then(function () { 
+                resolve();
+            }).catch(function(){
+                reject("unable to update student");
+            });
         });
 };
 

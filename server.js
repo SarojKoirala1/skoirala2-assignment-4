@@ -146,7 +146,7 @@ app.get("/student/:studentNum", (req, res) => {
 app.post("/student/update", (req, res) => {
     data.updateStudent(req.body).then(() => {
         res.redirect("/students");
-    }).catch((err)=>{
+    }).catch(()=>{
         res.status(500).send("Unable to Update Students");
     });
 });
