@@ -244,15 +244,15 @@ module.exports.updateCourse = function (courseData) {
     });
 };
 
-exports.deleteCourseById = function(id){
+module.exports.deleteCourseById = function(id){
     return new Promise((resolve, reject) => {
         Course.destroy({where: {courseId:id}}) 
-        .then(()=>resolve(Course.destroy({where: {courseId:id}}))) 
+        .then(()=>resolve(Course.destroy({where: {courseId:id}})))
         .catch(()=>reject("unable to delete course"))
     });
 };
 
-exports.deleteStudentByNum = function(studentNum){
+module.exports.deleteStudentByNum = function(studentNum){
     return new Promise((resolve, reject) => {
         Student.destroy({where: {studentNum:studentNum}}) 
         .then(()=>resolve(Student.destroy({where: {studentNum:studentNum}}))) 

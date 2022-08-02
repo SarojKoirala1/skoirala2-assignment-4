@@ -168,7 +168,7 @@ app.get("/courses", (req,res) => {
 app.get("/course/:id", (req, res) => {
     data.getCourseById(req.params.id)
     .then((data) => {
-        if(data.length>0)res.render("course", { course: data });
+        if(data.length>0) res.render("course", { course: data });
         else res.status(404).send("Course Not Found");
     }).catch((err) => {
         res.status(404).send("Course Not Found");
