@@ -146,12 +146,16 @@ app.get("/student/:studentNum", (req, res) => {
 app.post("/student/update", (req, res) => {
     data.updateStudent(req.body).then(() => {
         res.redirect("/students");
+    }).catch((err)=>{
+        res.status(500).send("Unable to Update Students");
     });
 });
 
 app.post("/course/update", (req, res) => {
     data.updateCourse(req.body).then(() => {
         res.redirect("/courses");
+    }).catch((err)=>{
+        res.status(500).send("Unable to Update Course");
     });
 });
 
@@ -177,15 +181,21 @@ app.get("/course/:id", (req, res) => {
 
 app.get("/course/delete/:id", (req, res) => {
     data.deleteCourseById(req.params.id)
-    .then(() => res.redirect("/courses"))
-    .catch(() => res.status(500).send("Unable to Remove Course / Course not found"))
-})
+    .then((data) => {
+        res.redirect("/courses");
+    }).catch((err) => {
+        res.status(500).send("Unable to Remove Course / Course not found");
+    });
+});
 
 app.get("/student/delete/:studentNum", (req, res) => {
     data.deleteStudentByNum(req.params.studentNum)
-    .then(() => res.redirect("/students"))
-    .catch(() => res.status(500).send("Unable to Remove Student / Student not found"))
-})
+    .then((data) => {
+        res.redirect("/students");
+    }).catch((err) => {
+        res.status(500).send("Unable to Remove Student / Student not found");
+    });
+});
 
 app.use((req,res)=>{
     res.status(404).send("Page Not Found");

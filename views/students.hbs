@@ -15,7 +15,7 @@
                 <th>Address</th>
                 <th>Status</th>
                 <th>Course ID</th>
-                <th></th>
+                <th><hr></hr></th>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +27,7 @@
                     <td>{{addressStreet}} {{addressCity}} {{addressProvince}}</td>
                     <td>{{status}}</td>
                     <td><a href="/students?course={{course}}">{{course}}</a></td>
-                    <td><a href="/student/delete/studentNum" class="btn btn-danger float-right">Remove</a></td>
+                    <td><a href="/student/delete/{{studentNum}}" class="btn btn-danger float-right">Remove</a></td>
                 </tr>
             {{/each}}
             </tbody>

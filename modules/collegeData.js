@@ -9,7 +9,7 @@ var sequelize = new Sequelize('deun3jc0i65dli', 'avmcfabsxlrvtj', '6e923adda1340
     query:{ raw: true }
 });
 
-const Student = sequelize.define('Student', {
+const Student = sequelize.define('student', {
     studentNum: {
         type:Sequelize.INTEGER,
         primaryKey:true,
@@ -25,7 +25,7 @@ const Student = sequelize.define('Student', {
     status:Sequelize.STRING,
 });
 
- const Course = sequelize.define('Course',{
+ const Course = sequelize.define('course',{
     courseId:{
         type:Sequelize.INTEGER,
         primaryKey:true,
@@ -79,8 +79,8 @@ module.exports.getAllStudents = function(){
         Student.findAll()
         .then(()=>resolve(Student.findAll()))
         .catch(()=>reject("no results returned"))
-    })
-}
+    });
+};
 
 module.exports.getCourses = function(){
    return new Promise((resolve,reject)=>{
@@ -95,7 +95,7 @@ module.exports.getCourses = function(){
    });
 };
 
-module.exports.getStudentByNum = function (num) {
+module.exports.getStudentByNum = function (studentNum) {
     return new Promise(function (resolve, reject) {
         //var foundStudent = null;
 
@@ -112,12 +112,12 @@ module.exports.getStudentByNum = function (num) {
         //resolve(foundStudent);
         Student.findAll({
             where:{
-                studentNum: num
+                studentNum: studentNum
             }
         })
         .then(()=>resolve(Student.findAll({
             where:{
-                studentNum: num
+                studentNum: studentNum
             }
         })))
         .catch(()=>reject("no results returned")) 
@@ -194,7 +194,7 @@ module.exports.addStudent = function (studentData) {
         }
         return new Promise((resolve, reject) => {
             Student.create(studentData)
-            .then(()=>resolve())
+            .then(()=>resolve(Student.create(studentData)))
             .catch(()=>reject("unable to create student"))
         });
 
@@ -247,7 +247,7 @@ module.exports.updateCourse = function (courseData) {
 module.exports.deleteCourseById = function(id){
     return new Promise((resolve, reject) => {
         Course.destroy({where: {courseId:id}}) 
-        .then(()=>resolve(Course.destroy({where: {courseId:id}})))
+        .then(()=>resolve("Destroyed"))
         .catch(()=>reject("unable to delete course"))
     });
 };
@@ -255,7 +255,7 @@ module.exports.deleteCourseById = function(id){
 module.exports.deleteStudentByNum = function(studentNum){
     return new Promise((resolve, reject) => {
         Student.destroy({where: {studentNum:studentNum}}) 
-        .then(()=>resolve(Student.destroy({where: {studentNum:studentNum}}))) 
+        .then(()=>resolve("Destroyed")) 
         .catch(()=>reject("unable to delete student"))
     });
 };
