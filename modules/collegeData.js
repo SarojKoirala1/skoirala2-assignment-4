@@ -185,7 +185,7 @@ module.exports.getCourseById = function (id) {
 };
 
 module.exports.addStudent = function (studentData) {
-        studentData.TA = (studentData.TA) ? true : false;
+        studentData.TA =(studentData.TA)?true:false;
         //studentData.TA = (studentData.TA) ? true : false;
         //studentData.studentNum = dataCollection.students.length + 1;
         //dataCollection.students.push(studentData);
@@ -196,9 +196,21 @@ module.exports.addStudent = function (studentData) {
         }
         return new Promise((resolve, reject) => {
             Student.create(studentData)
-            .then(()=>resolve("Student Added"))
+            .then(()=>resolve())
             .catch(()=>reject("unable to create student"))
         });
+
+};
+
+module.exports.addCourse = function (courseData) {
+    for(prop in courseData){
+        if(prop=="") prop=null;
+    }
+    return new Promise((resolve, reject) => {
+        Course.create(courseData)
+        .then(()=>resolve())
+        .catch(()=>reject("unable to create course"))
+    });
 
 };
 
@@ -212,41 +224,14 @@ module.exports.updateStudent = function (studentData) {
         //    }
         //}
         //resolve();
-        for(const prop in studentData){
-            if (studentData[prop] == ""){
-                studentData[prop] = null;
-            }
+        for(prop in studentData){
+            if(prop=="") prop=null;
         }
         return new Promise((resolve, reject) => {
-            Student.update({
-                firstName : studentData.firstName,
-                lastName : studentData.lastName,
-                email : studentData.email,
-                addressStreet : studentData.addressStreet,
-                addressCity : studentData.addressCity,
-                addressProvince : studentData.addressProvince,
-                TA : studentData.TA,
-                status : studentData.status
-            },{where: {studentNum:studentData.studentNum}}) 
-            .then(function () { 
-                resolve();
-            }).catch(function(){
-                reject("unable to update student");
-            });
+            Student.update(studentData,{where: {studentNum:studentData.studentNum}}) 
+            .then(() =>resolve(Student.update(studentData,{where: {studentNum:studentData.studentNum}})))
+            .catch(()=>reject("unable to update student"))
         });
-};
-
-
-module.exports.addCourse = function (courseData) {
-    for(prop in courseData){
-        if(prop=="") prop=null;
-    }
-    return new Promise((resolve, reject) => {
-        Course.create(courseData)
-        .then(()=>resolve())
-        .catch(()=>reject("unable to create course"))
-    });
-
 };
 
 module.exports.updateCourse = function (courseData) {
