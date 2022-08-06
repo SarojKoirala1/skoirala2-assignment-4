@@ -78,7 +78,7 @@ module.exports.getAllStudents = function(){
     //    resolve(dataCollection.students);
         Student.findAll()
         .then(()=>resolve(Student.findAll()))
-        .catch(()=>reject("no results returned"))
+        .catch(()=>reject("no results returned"));
     });
 };
 
@@ -91,7 +91,7 @@ module.exports.getCourses = function(){
     //resolve(dataCollection.courses);
     Course.findAll()
         .then(()=>resolve(Course.findAll()))
-        .catch(()=>reject("no results returned"))
+        .catch(()=>reject("no results returned"));
    });
 };
 
@@ -120,7 +120,7 @@ module.exports.getStudentByNum = function (studentNum) {
                 studentNum: studentNum
             }
         })))
-        .catch(()=>reject("no results returned")) 
+        .catch(()=>reject("no results returned"));
     });
 };
 
@@ -149,7 +149,7 @@ module.exports.getStudentsByCourse = function (course) {
                 course: course
             }
         })))
-        .catch(()=>reject("no results returned"))
+        .catch(()=>reject("no results returned"));
     });
 };
 
@@ -180,7 +180,7 @@ module.exports.getCourseById = function (id) {
             }
             
         })))
-        .catch(()=>reject("no results returned"))
+        .catch(()=>reject("no results returned"));
     });
 };
 
@@ -197,7 +197,7 @@ module.exports.addStudent = function (studentData) {
         return new Promise((resolve, reject) => {
             Student.create(studentData)
             .then(()=>resolve())
-            .catch(()=>reject("unable to create student"))
+            .catch(()=>reject("unable to create student"));
         });
 
 };
@@ -209,7 +209,7 @@ module.exports.addCourse = function (courseData) {
     return new Promise((resolve, reject) => {
         Course.create(courseData)
         .then(()=>resolve())
-        .catch(()=>reject("unable to create course"))
+        .catch(()=>reject("unable to create course"));
     });
 
 };
@@ -230,7 +230,7 @@ module.exports.updateStudent = function (studentData) {
         return new Promise((resolve, reject) => {
             Student.update(studentData,{where: {studentNum:studentData.studentNum}}) 
             .then(() =>resolve(Student.update(studentData,{where: {studentNum:studentData.studentNum}})))
-            .catch(()=>reject("unable to update student"))
+            .catch(()=>reject("unable to update student"));
         });
 };
 
@@ -241,7 +241,7 @@ module.exports.updateCourse = function (courseData) {
     return new Promise((resolve, reject) => {
         Course.update(courseData,{where:{courseId: courseData.courseId}}) 
         .then(()=>resolve(Course.update(courseData,{where:{courseId: courseData.courseId}})))
-        .catch(()=>reject("unable to update course"))
+        .catch(()=>reject("unable to update course"));
     });
 };
 
@@ -249,7 +249,7 @@ module.exports.deleteCourseById = function(id){
     return new Promise((resolve, reject) => {
         Course.destroy({where: {courseId:id}}) 
         .then(()=>resolve("Destroyed"))
-        .catch(()=>reject("unable to delete course"))
+        .catch(()=>reject("unable to delete course"));
     });
 };
 
@@ -257,7 +257,6 @@ module.exports.deleteStudentByNum = function(studentNum){
     return new Promise((resolve, reject) => {
         Student.destroy({where: {studentNum:studentNum}}) 
         .then(()=>resolve("Destroyed")) 
-        .catch(()=>reject("unable to delete student"))
+        .catch(()=>reject("unable to delete student"));
     });
 };
-
